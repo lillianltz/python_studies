@@ -14,7 +14,10 @@ def opcao_invalida():
 
 def exibir_subtitulo(texto):
     os.system('cls')
+    linha = "*" * len(texto)
+    print(linha)
     print(texto)
+    print(linha)
 
 def nome_programa():
     print("Sabor Express\n")
@@ -41,12 +44,15 @@ def cadastrar_restaurante():
 def listar_restaurantes():
     exibir_subtitulo("Lista de restaurantes:\n")
     
+    print(f"{"Nome do restaurante".ljust(20)} | {"Categoria".ljust(20)} | {"Status".ljust(20)}\n")
+
+
     for restaurante in restaurantes:    
         nome_restaurante = restaurante['nome']
         categoria = restaurante['categoria']
-        ativo = restaurante['ativo']
+        ativo = "Ativado" if restaurante['ativo'] else "Desativado"
         #print(f"- {nome_restaurante}")
-        print(f"- {nome_restaurante} | {categoria} | {ativo}")
+        print(f"{nome_restaurante.ljust(20)} | {categoria.ljust(20)} | {ativo}")
 
     voltar_ao_menu_principal()
 
