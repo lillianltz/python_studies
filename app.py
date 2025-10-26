@@ -1,6 +1,8 @@
 import os
 
-restaurantes = ['Lillian', 'Andre']
+restaurantes = [{"nome":"Tutti Pizza", "categoria":"Pizza", "ativo": False},
+                {"nome":"Farinha e Fogo", "categoria":"Massa", "ativo": True},
+                {"nome":"Sushi House", "categoria":"Japonesa", "ativo": True}]
 
 def voltar_ao_menu_principal():
     input("\nDigite uma tecla para voltar para o menu princial ")
@@ -25,15 +27,27 @@ def opcoes():
 
 def cadastrar_restaurante():
     exibir_subtitulo("Cadastrar restaurante")
+
     nome_restaurante = input("Digite o nome do restaurante que você deseja cadastrar: ")
-    restaurantes.append(nome_restaurante)
-    print(f"Restaurante {nome_restaurante} cadastrado!")
+    categoria = input(f"Digite a categoria do restaurante {nome_restaurante}: ")
+    dados_restaurante = {"nome":nome_restaurante, "categoria":categoria, "ativo":False}
+    restaurantes.append(dados_restaurante)
+    
+    #restaurantes.append(nome_restaurante)
+    print(f"Restaurante {nome_restaurante} cadastrado com sucesso!")
+    
     voltar_ao_menu_principal()
 
 def listar_restaurantes():
     exibir_subtitulo("Lista de restaurantes:\n")
+    
     for restaurante in restaurantes:    
-        print(f"- {restaurante}")
+        nome_restaurante = restaurante['nome']
+        categoria = restaurante['categoria']
+        ativo = restaurante['ativo']
+        #print(f"- {nome_restaurante}")
+        print(f"- {nome_restaurante} | {categoria} | {ativo}")
+
     voltar_ao_menu_principal()
 
 def encerrar():
